@@ -1,0 +1,24 @@
+class Solution:
+    def maxDistinctElements(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        length=len(nums)
+        place=nums[0]
+        count=1
+        for x in range(1,length):
+            if nums[x]<=place:
+                if place-nums[x]<2*k:
+                    nums[x]=place+1
+                    count+=1
+                    place=nums[x]
+            else:
+                place=nums[x]
+                count+=1
+        print(nums)
+        return(count)
+                
+            
+            
+            
+            
+            
+        

@@ -1,0 +1,11 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for z in range(len(nums)):
+            for y in range(len(nums)):
+                if z!=y and nums[z]+nums[y]==target:
+                    return(z,y)

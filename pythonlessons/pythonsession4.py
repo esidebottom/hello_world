@@ -1,6 +1,6 @@
 #06/10/2025
 #modules - a file containing python code
-import pythonlessons.edwardmodule as edwardmodule
+import edwardmodule as edwardmodule
 edwardmodule.EdwardFunction()
 
 #pip: python package manager

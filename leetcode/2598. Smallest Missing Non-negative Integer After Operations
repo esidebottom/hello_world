@@ -1,0 +1,13 @@
+class Solution:
+    def findSmallestInteger(self, nums: List[int], value: int) -> int:
+        
+        v = [0] * value
+        for num in nums:
+            v[num % value] += 1
+        min_v = min(v)
+        return(v.index(min_v) + min_v * value)
+
+                
+        
+        
+                
