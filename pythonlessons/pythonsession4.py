@@ -7,7 +7,8 @@ edwardmodule.EdwardFunction()
 #pip install bladibla
 
 #exception handling(errors)
-#dont solve the error, handle the error
+#dont solve the error, handle the error#
+s=0 #hash this to see except working
 try:
     print(s)
 except:
