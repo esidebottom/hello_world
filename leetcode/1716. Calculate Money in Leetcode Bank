@@ -1,0 +1,14 @@
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        #every week you put in sum 1-7. You put in 1 extra per day of the 8-14th day, 2 extra for each day of the 15-21st day etc
+        z=0
+        w=-1
+        v=0
+        q=0
+        for x in range(1,n+1):
+            w+=1
+            if w==7:
+                w=0
+                v+=1
+            q+=v+(x-v*7)
+        return(q)
