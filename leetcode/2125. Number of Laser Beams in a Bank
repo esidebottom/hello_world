@@ -1,0 +1,25 @@
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        total=len(bank)
+        x=0
+        a=0
+        b=0
+        p=1
+        tot=0
+        
+        while x+p < total:
+            
+            a=str(bank[x]).count("1")
+            b=str(bank[x+p]).count("1")
+
+            if a==0:
+                x+=1      
+            elif b==0:
+                p+=1
+                
+            else:
+                tot+=a*b
+                p=1
+                x+=1
+                
+        return(tot)
