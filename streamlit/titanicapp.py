@@ -1,8 +1,22 @@
 import streamlit as st
+import pickle
 
 st.title('Titanic Survival Prediction App')
 
 st.image('titanic.jpg', caption='Predicting Titanic Survivors')
+
+#load the pretrained model
+with open('titanic.pkl','rb') as modelFile:#rb means read binary
+    model=pickle.load(modelFile)
+
+#function to make predictions
+def PredictionFunction(Pclass,Sex,Age,SibSp,Parch,Fare,Embarked):
+    try:
+        prediction=model.predict([[Pclass,Sex,Age,SibSp,Parch,Fare,Embarked]]) #table with 1 row need 2 square brackets to be 2 square brackets
+        return 'Survived' if prediction==1 else 'Did not survive'
+
+    except Exception as e:
+        return f'Error: {str(e)}'
 
 #Sidebar for Instructions
 
@@ -34,16 +48,9 @@ def main():
 
     Embarked={'C':0,'Q':1,'S':2}[Embarked]
 
-if st.button('Predict'):
-    st.balloons()
+    if st.button('Predict'):
+        result=PredictionFunction(Pclass,Sex,Age,SibSp,Parch,Fare,Embarked)
+        st.markdown(f'{result}')
+        st.balloons()
 main()
 
-# #connect to model and predict from jupyter notebook
-# import pickle
-# model=pickle.load(open('titanic_model.sav','rb'))
-# input_data=[[Pclass,Sex,Age,SibSp,Parch,Fare,Embarked]]                        
-# prediction=model.predict(input_data)
-# if prediction[0]==0:
-#     st.error('The passenger would not have survived.')
-# else:
-#     st.success('The passenger would have survived.')    
