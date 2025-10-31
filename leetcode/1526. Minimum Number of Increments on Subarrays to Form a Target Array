@@ -1,0 +1,8 @@
+class Solution:
+    def minNumberOperations(self, target: List[int]) -> int:
+        l=len(target)
+        c=target[-1]
+        for x in range(l-1):
+            if target[x]>target[x+1]:
+                c+=target[x]-target[x+1]
+        return(c)
