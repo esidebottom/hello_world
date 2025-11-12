@@ -1,0 +1,41 @@
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        size=100000
+        q=len(nums)
+        print(q-nums.count(1))
+
+        for x in range(q):
+            s=nums[x]
+            r=1
+
+            if nums==[1]*q:
+                return(0)
+
+            if s==1:
+                return(q-nums.count(1))
+
+            while s>1:
+                if x+r>=q:
+                    break
+                l=nums[x+r]
+                if s>l:
+                        s,l=l,s
+                gcd=l%s
+                
+                while gcd!=0:
+                    if s>l:
+                        s,l=l,s
+                    
+                    l=s
+                    s=gcd
+                    gcd=l%s
+                    #break out of this loop with s=gcd of l and s, or just s=gcd from above if already = 0
+
+                if s==1:
+                    if r-1<size:
+                        size=r-1
+                r+=1
+        if size==100000:
+            return(-1)
+        else:
+            return(q+size)
