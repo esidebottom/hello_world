@@ -1,0 +1,11 @@
+class Solution:
+    def isOneBitCharacter(self, bits: List[int]) -> bool:
+
+        free=True
+        for x in range(len(bits)-1):
+            if free==True:
+                if bits[x]==1:
+                    free=False
+            else:
+                free=True
+        return(free)
